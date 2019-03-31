@@ -1,0 +1,40 @@
+kind: pipeline
+name: arm
+
+platform:
+  os: linux
+  arch: arm
+
+steps:
+  - name: build
+    image: ubuntu
+    commands:
+      - uname -a
+      - cat /proc/cpuinfo | head
+      - apt update
+      - apt install -y file
+      - cd build
+      - file hello_arm
+      - ./hello_arm
+
+---
+
+kind: pipeline
+name: arm64
+
+platform:
+  os: linux
+  arch: arm64
+
+steps:
+  - name: build
+    image: ubuntu
+    commands:
+      - uname -a
+      - cat /proc/cpuinfo | head
+      - apt update
+      - apt install -y file
+      - cd build
+      - file hello_arm
+      - ./hello_arm
+
